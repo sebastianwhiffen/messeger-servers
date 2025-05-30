@@ -4,4 +4,4 @@ var app = builder.Build();
 app.MapGet("/", () => "This is Rivers server, Welcome");
 
 
-app.Run();
+app.Run("http://localhost:3000");
