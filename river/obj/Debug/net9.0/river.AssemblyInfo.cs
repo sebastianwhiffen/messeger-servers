@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("river")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+343357285e212b0e69a6a0f77a9370cc32b61bdd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d422b4ed03d18e3d4f3b48edf3faabddc4c1af39")]
 [assembly: System.Reflection.AssemblyProductAttribute("river")]
 [assembly: System.Reflection.AssemblyTitleAttribute("river")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
