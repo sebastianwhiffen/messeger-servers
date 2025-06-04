@@ -12,7 +12,7 @@ person.name = "River";
 
 class person 
 {
-    int age;
+    public int age;
 
-    string name;
+    public string name;
 }

@@ -7,7 +7,7 @@ async Task<IResult> HandlePost(HttpRequest request)
 {
     
 }
-app.MapGet("/" HandlePost)
+app.MapGet("/", HandlePost);
 
 
 app.Run("http://localhost:3000");
