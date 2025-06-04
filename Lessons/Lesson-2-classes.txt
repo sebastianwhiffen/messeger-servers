@@ -1,0 +1,18 @@
+string is the return type of a function
+void means nothing
+type name(parameters)
+
+
+classes:
+
+var SendPerson = new person();
+person.age = 11;
+person.name = "River";
+
+
+class person 
+{
+    int age;
+
+    string name;
+}

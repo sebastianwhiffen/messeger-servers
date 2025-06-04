@@ -1,3 +1,0 @@
-string is the return type of a function
-void means nothing
-type name(parameters)
