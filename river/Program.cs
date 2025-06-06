@@ -1,8 +1,5 @@
 using System.Text;
 
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
-
 async Task<IResult> HandlePost(HttpRequest request)
 {
     using var reader = new StreamReader(request.Body, Encoding.UTF8);
@@ -10,7 +7,6 @@ async Task<IResult> HandlePost(HttpRequest request)
     Console.WriteLine(body);
     return Results.Ok();
 }
-app.MapPost("/", HandlePost);
 
 async Task MSG_Get(string message)
 {
@@ -18,7 +14,16 @@ async Task MSG_Get(string message)
     var content = new StringContent(message, Encoding.UTF8, "application/json");
     await httpClient.PostAsync("http://localhost:3000/", content);
 }
+
+var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+//gets
+app.MapGet("/", FrontEndEndpoints.ServeFrontEnd);
 app.MapGet("/send-message/{message}", MSG_Get);
+
+//posts
+app.MapPost("/", HandlePost);
 
 
 app.Run("http://localhost:3000");
