@@ -6,12 +6,14 @@
   </head>
   <body>
     <h1>Welcome to MessĒger Servers</h1>
+        <input type="text" id="msg" name="msg" placeholder="MessĒge">
     <button onclick="SendMSG()">Send MessĒge</button>
 
     <script>
 function SendMSG() 
 {
-  window.location.href = "http://localhost:3000/send-message/hello-test";
+  const messageinput = document.getElementById('msg').value;
+  window.location.href = "http://localhost:3000/send-message/" + messageinput;
 }
 </script>
 
