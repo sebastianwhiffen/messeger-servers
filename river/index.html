@@ -6,16 +6,37 @@
   </head>
   <body>
     <h1>Welcome to MessĒger Servers</h1>
-        <input type="text" id="msg" name="msg" placeholder="MessĒge">
+    <input
+      type="text"
+      id="msg"
+      name="msg"
+      placeholder="MessĒge"
+    />
     <button onclick="SendMSG()">Send MessĒge</button>
 
     <script>
-function SendMSG() 
-{
-  var messageinput = document.getElementById('msg').value;
-  window.location.href = "http://localhost:3000/send-message/" + messageinput;
-}
-</script>
+      async function SendMSG() {
+        const msg = document.getElementById("msg").value;
 
+        const response = await fetch(
+          "http://localhost:3000/receive-message",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ text: msg }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        await response.text();
+        // alert("Message sent!");
+        document.getElementById("msg").value = "";
+      }
+    </script>
   </body>
 </html>
