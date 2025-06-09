@@ -19,6 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 //gets
+app.MapGet("/send-message/{messageinput}", FrontEndEndpoints.ServeFrontEndForMsg);
 app.MapGet("/", FrontEndEndpoints.ServeFrontEnd);
 app.MapGet("/send-message/{message}", MSG_Get);
 
