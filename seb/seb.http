@@ -1,0 +1,6 @@
+@seb_HostAddress = http://localhost:5095
+
+GET {{seb_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
