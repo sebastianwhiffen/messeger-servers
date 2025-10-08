@@ -19,6 +19,9 @@ var users = new[]
     "river", "seb"
 };
 
+string myVariable = "Hello, World!";
+
+app.MapGet("/usrlst", BackEndpoints.ShowHTML);
 app.MapGet("/get-users", () => { return users; });
 app.Run();
 
