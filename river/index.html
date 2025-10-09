@@ -1,51 +1,21 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>messaging app</title>
-  </head>
+<html lang="en">
+  <head> </head>
   <body>
-    <h1>Welcome to MessĒger Servers</h1>
-    <input
-      type="text"
-      id="msg"
-      name="msg"
-      placeholder="MessĒge"
-    />
-    <button onclick="SendMSG()">Send MessĒge</button>
-
-    <script>
-      //this function is for sending the message to the backend.
-      async function SendMSG() {
-        //we get the users message by targeting the box they have filled in.
-        // see this function getElementById("msg")? it grabs the content of an element by the id that you have assigned it.
-        //  since we assigned it with the id="msg" we can just grab the content
-        const msg = document.getElementById("msg").value;
-
-        //this is a special javascript function that sends a http message for you.
-        // its called fetch.
-        const response = await fetch(
-          //param1: the address to send to
-          "http://localhost:3000/receive-message",
-          //param2: the object defining some http settings like METHOD and HEADERS
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            //the actual content of the message (our message from getElementById)
-            body: JSON.stringify({ text: msg }),
-          }
-        );
-
-        //check if it went to the backend all good
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-
-        //set the message box back to empty
-        document.getElementById("msg").value = "";
-      }
-    </script>
+    <h1 id="user-list">The users are:</h1>
   </body>
+  <script>
+    fetch("http://localhost:3000/get-users")
+      .then((res) => res.json())
+      .then((users) => {
+        const userListElement =
+          document.getElementById("user-list");
+
+        for (const user of users) {
+          const li = document.createElement("li");
+          li.textContent = user;
+          userListElement.appendChild(li);
+        }
+      });
+  </script>
 </html>

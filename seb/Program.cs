@@ -1,27 +1,21 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
-app.UseHttpsRedirection();
+//code taken from: https://stackoverflow.com/questions/48285408/how-to-disable-cors-completely-in-webapi
+//bc we dont care about CORS for now :)
+app.UseCors(x => x.AllowAnyMethod().AllowAnyHeader().SetIsOriginAllowed(origin => true));
 
 var users = new[]
 {
     "river", "seb"
 };
 
-string myVariable = "Hello, World!";
 
-app.MapGet("/usrlst", BackEndpoints.ShowHTML);
 app.MapGet("/get-users", () => { return users; });
-app.Run();
+
+app.Run("http://localhost:3000");
+
 
