@@ -5,15 +5,26 @@
     <h1 id="user-list">The users are:</h1>
   </body>
   <script>
+
+    //send http request to this address
     fetch("http://localhost:3000/get-users")
+    //await a return from the server then go forward with the json data
       .then((res) => res.json())
+      //once we've got the json data from the server, use it
       .then((users) => {
+        //find the html element on our page to begin modifying with our data that we just found
         const userListElement =
           document.getElementById("user-list");
 
+          //go through each user in the list of users that we just fetched from my server
         for (const user of users) {
+          //create html elements and put the name of each user in them
           const li = document.createElement("li");
           li.textContent = user;
+
+          //append the newly created li element (with the users name inside of it) into the user-list element
+          //see how we put id="user-list" inside "<h1 id="user-list">The users are:</h1>""
+          //we're appending the newly created elements into that existing html element
           userListElement.appendChild(li);
         }
       });
