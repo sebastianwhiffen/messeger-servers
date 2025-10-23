@@ -1,14 +1,7 @@
 #!/bin/bash
 
-JobStartSebServer () {
-    cd seb
-    dotnet run --project seb.csproj
-}
-
-JobStartRiverServer () {
-    cd river
-    dotnet run --project river.csproj
-}
+. ./src/seb.sh
+. ./src/river.sh
 
 JobStartSebServer &
 JobStartRiverServer &
