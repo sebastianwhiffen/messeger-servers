@@ -1,9 +1,9 @@
 #!/bin/bash
+set -m
 
-. ./src/seb.sh
-. ./src/river.sh
+dotnet run --project ./seb/seb.csproj &
+dotnet run --project ./river/river.csproj &
 
-JobStartSebServer &
-JobStartRiverServer &
+trap "kill 0" SIGINT SIGTERM
 
-
+wait
